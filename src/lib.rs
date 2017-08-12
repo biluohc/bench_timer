@@ -29,12 +29,39 @@ fn main() {
 
     timer_sort!(3,
                 100000,
+                to_owed(),
+                new(),
+                default(),
+                format(),
+                insert_e(&msg),
+                push_str(&msg),
                 format_s(&msg),
                 insert_0(&msg),
-                insert_e(&msg),
-                push_str(&msg));
+                mul_args_add(&msg, ": timer"),
+                mul_args_like_push_str(&msg, ": timer")
+                );
 }
 
+#[inline(always)]
+fn to_owed() {
+    let s = "".to_owned();
+    dbln!("{}", s);
+}
+#[inline(always)]
+fn new() {
+    let s = String::new();
+    dbln!("{}", s);
+}
+#[inline(always)]
+fn default() {
+    let s = String::default();
+    dbln!("{}", s);
+}
+#[inline(always)]
+fn format() {
+    let s = format!("{}", "");
+    dbln!("{}", s);
+}
 #[inline(always)]
 fn push_str(msg: &str) {
     let mut s = msg.to_owned();
@@ -60,6 +87,17 @@ fn insert_e(msg: &str) {
     s.insert_str(len, msg);
     dbln!("{}", s);
 }
+#[inline(always)]
+fn mul_args_add(msg0: &str, msg1: &str) {
+    let s = msg0.to_owned() + msg1;
+    dbln!("{}", s);
+}
+#[inline(always)]
+fn mul_args_like_push_str(msg0: &str, msg1: &str) {
+    let mut s = msg0.to_owned();
+    s.push_str(msg1);
+    dbln!("{}", s);
+}
 ```
 */
 use std::time::{SystemTime, SystemTimeError, Duration};
@@ -76,9 +114,9 @@ pub fn timer_avg<F>(mut f: F, times: u32) -> Result<Duration, SystemTimeError>
 
 #[macro_export]
 macro_rules! timer_times {
-     ($times_macro:expr, $times_fn:expr, $($fn_name: ident($args: expr)),+) => {
+     ($times_macro:expr, $times_fn:expr, $($fn_name: ident($($args: expr),*)),+) => {
          for _ in 0..$times_macro {
-             $(println!("{}: {:?}",stringify!($fn_name), $crate::timer_avg(||$fn_name($args), $times_fn).unwrap()); )+
+             $(println!("{}: {:?}",stringify!($fn_name), $crate::timer_avg(||$fn_name($($args),*), $times_fn).unwrap()); )+
              println!();
          }
      }
@@ -87,11 +125,11 @@ macro_rules! timer_times {
 #[macro_export]
 macro_rules! timer_sort {
     // tt 貌似也可以，只是也不能支持通过类型调用函数。
-     ($times_macro:expr, $times_fn:expr, $($fn_name: tt($args: expr)),+) => {
+     ($times_macro:expr, $times_fn:expr, $($fn_name: tt($($args: expr),*)),+) => {
          use std::time::Duration;
          for _ in 0..$times_macro {
              let mut vs:Vec<(&str, Duration)> =Vec::default();
-             $(vs.push((stringify!($fn_name),$crate::timer_avg(||$fn_name($args), $times_fn).unwrap()));)+   
+             $(vs.push((stringify!($fn_name),$crate::timer_avg(||$fn_name($($args),*), $times_fn).unwrap()));)+   
             vs.sort_by(|&(_,ref a),&(_,ref b)| b.cmp(a));
             let max_len= vs.as_slice().iter() .fold(0,| acc, &(s,_) | if s.len() > acc { s.len() } else { acc });            
             let blanks_fix= |msg: &str| {

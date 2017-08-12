@@ -1,6 +1,6 @@
-[![Build status](https://travis-ci.org/biluohc/timer.svg?branch=master)](https://github.com/biluohc/timer)
+[![Build status](https://travis-ci.org/biluohc/bench_timer.svg?branch=master)](https://github.com/biluohc/bench_timer)
 
-# timer
+# bench_timer
 ## bench library for rust
 
 {{readme}}

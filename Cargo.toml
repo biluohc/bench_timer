@@ -1,18 +1,17 @@
 [package]
-name = "timer"
+name = "bench_timer"
 version = "0.1.0"
 authors = ["biluohc <biluohc@qq.com>"]
 license = "MIT"
 
-repository = "https://github.com/biluohc/timer"
-documentation = "https://docs.rs/timer/"
+repository = "https://github.com/biluohc/bench_timer"
+documentation = "https://docs.rs/bench_timer/"
 readme = "readme.md"
-# categories = ["command-line-interface"]
-keywords = ["bench"]
+categories = ["development-tools"]
+keywords = ["bench","timer"]
 
 [badges]
-travis-ci = { repository = "biluohc/timer" }
-
+travis-ci = { repository = "biluohc/bench_timer" }
 
 [dependencies]
 stderr = "0.8.0"

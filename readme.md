@@ -1,6 +1,6 @@
-[![Build status](https://travis-ci.org/biluohc/timer.svg?branch=master)](https://github.com/biluohc/timer)
+[![Build status](https://travis-ci.org/biluohc/bench_timer.svg?branch=master)](https://github.com/biluohc/bench_timer)
 
-# timer
+# bench_timer
 ## bench library for rust
 
 ### Notice:
@@ -14,7 +14,7 @@
 ```toml
 [dependencies]
 stderr = "0.8.0"
-timer = { git = "https://github.com/biluohc/timer", branch = "master", version = "0.1.0"}
+bench_timer = { git = "https://github.com/biluohc/bench_timer", branch = "master", version = "0.1.0"}
 ```
 
 #### on code:
@@ -23,7 +23,7 @@ timer = { git = "https://github.com/biluohc/timer", branch = "master", version =
 #[macro_use]
 extern crate stderr;
 #[macro_use]
-extern crate timer;
+extern crate bench_timer;
 
 fn main() {
     let msg = std::env::args()

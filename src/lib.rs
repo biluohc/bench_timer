@@ -10,7 +10,7 @@
 ```toml
 [dependencies]
 stderr = "0.8.0"
-timer = { git = "https://github.com/biluohc/timer", branch = "master", version = "0.1.0"}
+bench_timer = { git = "https://github.com/biluohc/bench_timer", branch = "master", version = "0.1.0"}
 ```
 
 ### on code: 
@@ -19,7 +19,7 @@ timer = { git = "https://github.com/biluohc/timer", branch = "master", version =
 #[macro_use]
 extern crate stderr;
 #[macro_use]
-extern crate timer;
+extern crate bench_timer;
 
 fn main() {
     let msg = std::env::args()

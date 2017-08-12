@@ -1,7 +1,7 @@
 #[macro_use]
 extern crate stderr;
 #[macro_use]
-extern crate timer;
+extern crate bench_timer;
 
 fn main() {
     let msg = std::env::args()

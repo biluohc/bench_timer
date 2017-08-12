@@ -1,11 +1,17 @@
 /*!
-## Notice: 
-
-**Have to use release mod(with optimizations)**
+## Notice: **Have to use release mod(with optimizations)**
 
 ## example: 
 
 ### on cargo.toml:
+
+```toml
+[dependencies]
+stderr = "0.8.0"
+bench_timer = "0.1.0"
+```
+
+or
 
 ```toml
 [dependencies]
@@ -37,8 +43,8 @@ fn main() {
                 push_str(&msg),
                 format_s(&msg),
                 insert_0(&msg),
-                mul_args_add(&msg, ": timer"),
-                mul_args_like_push_str(&msg, ": timer")
+                mul_args_add(&msg, ": cargo"),
+                mul_args_like_push_str(&msg, ": cargo")
                 );
 }
 
@@ -65,24 +71,24 @@ fn format() {
 #[inline(always)]
 fn push_str(msg: &str) {
     let mut s = msg.to_owned();
-    s.push_str(": timer");
+    s.push_str(": cargo");
     dbln!("{}", s);
 }
 
 #[inline(always)]
 fn format_s(msg: &str) {
-    let s = format!("{}: timer", msg);
+    let s = format!("{}: cargo", msg);
     dbln!("{}", s);
 }
 #[inline(always)]
 fn insert_0(msg: &str) {
-    let mut s = ": timer".to_owned();
+    let mut s = ": cargo".to_owned();
     s.insert_str(0, msg);
     dbln!("{}", s);
 }
 #[inline(always)]
 fn insert_e(msg: &str) {
-    let mut s = ": timer".to_owned();
+    let mut s = ": cargo".to_owned();
     let len = s.len();
     s.insert_str(len, msg);
     dbln!("{}", s);

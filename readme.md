@@ -1,9 +1,13 @@
 # timer
 ## bench library for rust
 
-example:
+### Notice:
 
-on cargo.toml:
+**Have to use release mod(with optimizations)**
+
+### example:
+
+#### on cargo.toml:
 
 ```toml
 [dependencies]
@@ -11,7 +15,7 @@ stderr = "0.8.0"
 timer = { git = "https://github.com/biluohc/timer", branch = "master", version = "0.1.0"}
 ```
 
-on code:
+#### on code:
 
 ```rust
 #[macro_use]

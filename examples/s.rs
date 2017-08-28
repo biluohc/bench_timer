@@ -4,24 +4,24 @@ extern crate stderr;
 extern crate bench_timer;
 
 fn main() {
-    let msg = std::env::args()
-        .skip(1)
-        .next()
-        .unwrap_or("fuck u".to_owned());
+    let msg = std::env::args().skip(1).next().unwrap_or_else(
+        || "fuck u".to_owned(),
+    );
 
-    timer_sort!(3,
-                100000,
-                to_owed(),
-                new(),
-                default(),
-                format(),
-                insert_e(&msg),
-                push_str(&msg),
-                format_s(&msg),
-                insert_0(&msg),
-                mul_args_add(&msg, ": cargo"),
-                mul_args_like_push_str(&msg, ": cargo")
-                );
+    timer_sort!(
+        3,
+        100000,
+        to_owed(),
+        new(),
+        default(),
+        format(),
+        insert_e(&msg),
+        push_str(&msg),
+        format_s(&msg),
+        insert_0(&msg),
+        mul_args_add(&msg, ": cargo"),
+        mul_args_like_push_str(&msg, ": cargo")
+    );
 }
 
 #[inline(always)]

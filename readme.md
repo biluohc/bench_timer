@@ -16,7 +16,7 @@
 ```toml
 [dependencies]
 stderr = "0.8.0"
-bench_timer = "0.1.0"
+bench_timer = "0.1.1"
 ```
 
 or
@@ -24,7 +24,7 @@ or
 ```toml
 [dependencies]
 stderr = "0.8.0"
-bench_timer = { git = "https://github.com/biluohc/bench_timer", branch = "master", version = "0.1.0"}
+bench_timer = { git = "https://github.com/biluohc/bench_timer", branch = "master", version = "0.1.1"}
 ```
 
 #### on code:
@@ -39,7 +39,7 @@ fn main() {
     let msg = std::env::args()
         .skip(1)
         .next()
-        .unwrap_or("fuck u".to_owned());
+        .unwrap_or_else(|| "fuck u".to_owned());
 
     timer_sort!(3,
                 100000,
